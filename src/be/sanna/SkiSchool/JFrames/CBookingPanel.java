@@ -187,8 +187,7 @@ public class CBookingPanel extends JPanel {
 		    public void itemStateChanged(ItemEvent e) {
 		        if (e.getStateChange() == ItemEvent.SELECTED) {
 		            updatePrice();
-		            System.out.println("selected Lesonn's instructor: " + ((Lesson) cBox_info_Lesson.getSelectedItem()).getInstructor());
-		        }
+		            }
 		    }
 		});
 		

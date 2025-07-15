@@ -100,7 +100,12 @@ public class Booking {
 	
 	//Methods
 	public double calculatePrice() {
+		if (period == null || period.getStartDate() == null || period.getEndDate() == null || lesson == null) {
+			return 0;
+		}
+		
 		int nbWeek = (int)(ChronoUnit.DAYS.between(period.getStartDate(), period.getEndDate())+1)/6;
+		
 		if(insurance == true) {
 			return (lesson.getLessonPrice() * nbWeek) + 20;
 		}else {

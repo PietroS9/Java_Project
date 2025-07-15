@@ -3,6 +3,7 @@ package be.sanna.SkiSchool.JFrames;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -283,9 +284,15 @@ public class DBookingPanel extends JPanel {
 	
 	//Methods
 	protected void loadBookingData() {
-		List<Booking> bookings = booking.getAllBookings(bookingDAO, lessonDAO.getAllLessons(instructorDAO.getAllInstructors(accrDAO.getAllAccreditations()),
-														lessonTypeDAO.getAllLessontypes(accrDAO.getAllAccreditations())), 
-														studentDAO.getAllStudents(), periodDAO.getAllPeriods());
+		List<Booking> bookings = booking.getAllBookings(
+				bookingDAO, 
+				lessonDAO.getAllLessons(
+							instructorDAO.getAllInstructors(accrDAO.getAllAccreditations()),
+							lessonTypeDAO.getAllLessontypes(accrDAO.getAllAccreditations())
+							), 
+				studentDAO.getAllStudents(), 
+				periodDAO.getAllPeriods()
+				);
 		
 		updateTable(bookings);
 	}
@@ -314,6 +321,9 @@ public class DBookingPanel extends JPanel {
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         tableDBooking.setModel(model);
+        
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        tableDBooking.setRowSorter(sorter);
 	}
 	
 	private void search() {

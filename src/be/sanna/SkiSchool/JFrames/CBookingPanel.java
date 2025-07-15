@@ -27,6 +27,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import com.toedter.calendar.JDateChooser;
 
@@ -186,6 +187,7 @@ public class CBookingPanel extends JPanel {
 		    public void itemStateChanged(ItemEvent e) {
 		        if (e.getStateChange() == ItemEvent.SELECTED) {
 		            updatePrice();
+		            System.out.println("selected Lesonn's instructor: " + ((Lesson) cBox_info_Lesson.getSelectedItem()).getInstructor());
 		        }
 		    }
 		});
@@ -268,6 +270,9 @@ public class CBookingPanel extends JPanel {
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         tableCBooking.setModel(model);
+        
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        tableCBooking.setRowSorter(sorter);
 	}
 	
 	private void createBooking() {

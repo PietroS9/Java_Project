@@ -24,6 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import com.toedter.calendar.JDateChooser;
 
@@ -337,6 +338,9 @@ public class DLessonPanel extends JPanel {
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         tableDLesson.setModel(model);
+        
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        tableDLesson.setRowSorter(sorter);
 	}
 	
 	private void search() {

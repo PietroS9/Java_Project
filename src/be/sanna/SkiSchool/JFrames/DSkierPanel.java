@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import com.toedter.calendar.JDateChooser;
 
@@ -170,6 +171,9 @@ public class DSkierPanel extends JPanel {
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         tableDSkier.setModel(model);
+        
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        tableDSkier.setRowSorter(sorter);
     }
 	
 	public void search() {

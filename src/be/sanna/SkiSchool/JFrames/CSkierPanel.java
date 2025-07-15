@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import com.toedter.calendar.JDateChooser;
 
@@ -123,6 +124,9 @@ public class CSkierPanel extends JPanel {
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         tableCSkier.setModel(model);
+        
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        tableCSkier.setRowSorter(sorter);
     }
 	
 	private void createStudent() {

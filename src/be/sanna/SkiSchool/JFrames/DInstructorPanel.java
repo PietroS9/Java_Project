@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import javax.swing.JTextArea;
 import com.toedter.calendar.JDateChooser;
 
@@ -236,6 +237,9 @@ public class DInstructorPanel extends JPanel {
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         tableDInstructor.setModel(model);
+        
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        tableDInstructor.setRowSorter(sorter);
 	}
 	
 	private void search() {

@@ -104,7 +104,7 @@ public class Booking {
 			return 0;
 		}
 		
-		int nbWeek = (int)(ChronoUnit.DAYS.between(period.getStartDate(), period.getEndDate())+1)/6;
+		int nbWeek = (int)(ChronoUnit.WEEKS.between(period.getStartDate(), period.getEndDate().plusDays(2)));
 		
 		if(insurance == true) {
 			return (lesson.getLessonPrice() * nbWeek) + 20;

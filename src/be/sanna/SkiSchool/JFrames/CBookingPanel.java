@@ -343,9 +343,8 @@ public class CBookingPanel extends JPanel {
 		        txtPrice.setText(String.valueOf(finalPrice));
 	    	}
 	    } else {
-		    int nbWeek = (int)ChronoUnit.WEEKS.between(startDateChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
-		    										   , endDateChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-		    if(nbWeek<1) nbWeek=1;
+		    int nbWeek = (int)(ChronoUnit.WEEKS.between(startDateChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+		    										   , endDateChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(2)));
 		    if (selectedLesson != null) {
 		        double basePrice = selectedLesson.getLessonPrice() * nbWeek;
 		        double finalPrice = isInsured ? basePrice + 20 : basePrice;

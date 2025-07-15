@@ -278,9 +278,18 @@ public class CBookingPanel extends JPanel {
 	    LocalDate endDate = endDateChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 	    LocalDate minDate = LocalDate.of(2024, 12, 6);
 	    LocalDate maxDate = LocalDate.of(2025, 5, 3);
+	    
+	    if(selectedLesson.getIndividual() == false && (startDate.getDayOfWeek() != java.time.DayOfWeek.SUNDAY
+	    		|| endDate.getDayOfWeek() != java.time.DayOfWeek.FRIDAY)) {
+			JOptionPane.showMessageDialog(this, "Les cours collectifs débutent obligatoirement le dimanche et se finnsent le vendredi.", "Erreur",
+					JOptionPane.ERROR_MESSAGE);
+			return;
+	    }
+	    
 	    if(startDate == null || endDate == null || startDate.isBefore(minDate) || 
 	    		endDate.isAfter(maxDate) || endDate.isBefore(startDate)==true) {
 	    	JOptionPane.showMessageDialog(this, "Veuillez sélectionner des dates valides ou cohérentes.", "Erreur", JOptionPane.ERROR_MESSAGE);
+	    	return;
 	    }    
 	    boolean isInsured = rdbtnIsInsured.isSelected();
 	    

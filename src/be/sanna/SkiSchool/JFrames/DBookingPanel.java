@@ -316,7 +316,9 @@ public class DBookingPanel extends JPanel {
             data[i][4] = booking.getPrice();
             data[i][5] = booking.getLesson().toString();
             data[i][6] = booking.getStudent().toString();
-            data[i][7] = booking.getInstructor().toString();
+            data[i][7] = (booking.getLesson() != null && booking.getLesson().getInstructor() != null) 
+                    ? booking.getLesson().getInstructor().toString() 
+                    : "No Instructor";
         }
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
